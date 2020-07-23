@@ -4,7 +4,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
-
+require('dotenv').config({path: __dirname + '/.env'})
+const BAMBI_CONNECT = process.env.BAMBI_CONNECT
 const homeStartingContent = "These are the latest posts below from various sources.";
 const aboutContent = "";
 const contactContent = "h.sev@tiscali.co.uk";
@@ -16,7 +17,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/blogDB", {useNewUrlParser: true});
+//mongoose.connect("mongodb://localhost:27017/blogDB", {useNewUrlParser: true});
+mongoose.connect(BAMBI_CONNECT,
+  { useNewUrlParser: true,
+    useUnifiedTopology: true },
+ (error)=>console.log(`Connection requested`))
 
 const postSchema = {
   title: String,
