@@ -79,7 +79,7 @@ app.get("/contact", function(req, res){
   res.render("contact", {contactContent: contactContent});
 });
 
-const port = process.env.port || 3000
-app.listen(port, function() {
-  console.log(`Server started on port: ${port} `);
-});
+const port = process.env.PORT || 3000
+app.listen(port, ()=>{
+    console.log(`Server is up and running at port ${port}`)
+})
