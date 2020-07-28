@@ -19,8 +19,7 @@ app.use(express.static("public"));
 
 //mongoose.connect("mongodb://localhost:27017/blogDB", {useNewUrlParser: true});
 mongoose.connect(BAMBI_CONNECT,
-  { useNewUrlParser: true,
-    useUnifiedTopology: true },
+  { useNewUrlParser: true },
  (error)=>console.log(`Connection requested`))
 
 const postSchema = {
@@ -78,6 +77,18 @@ app.get("/about", function(req, res){
 app.get("/contact", function(req, res){
   res.render("contact", {contactContent: contactContent});
 });
+
+//Delete a post
+app.post('/delete', (req,res)=>{
+  const postDel = req.body.removePost;
+  Post.findByIdAndRemove(postDel, (err)=>{
+    if(!err){
+      console.log('Successfully deleted the post')
+    }
+    res.redirect('/')
+  })
+
+})
 
 const port = process.env.PORT || 3000
 app.listen(port, ()=>{
