@@ -1,19 +1,19 @@
 
 <%- include("partials/header"); -%>
-
+<div class="posts">
     <h1>POSTS</h1>
     <p> <%= startingContent %> </p>
-
-
+</div>
   <%  posts.forEach(function(post){ %>
-
+  <div class="posts">
     <h1><%=post.title%></h1>
+  
     <p>
     <%=post.content.substring(0, 100) + " ..."%>
     <a href="/posts/<%=post._id%>">Read More</a>
-    <form action="delete" method="post"><button type="submit" name="removePost" value="<%=post._id%>">DELETE</button></form>
+    <form action="delete" method="post"><button type="submit" class="delete" name="removePost" value="<%=post._id%>">DELETE</button></form>
     </p>
-
+  </div>
 
     <% }) %>
 

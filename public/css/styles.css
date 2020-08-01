@@ -41,3 +41,15 @@ html {
 	font-size: 12px;
   color: #fff;
 }
+
+
+  .posts {
+    background: rgb(243, 239, 239);
+    padding-left:10px;
+    border-radius: 5px;
+  }
+
+  .delete{
+    color: white;
+    background-color: rgb(231, 123, 123);
+  }
